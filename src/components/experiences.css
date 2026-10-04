@@ -1,0 +1,651 @@
+.experiences {
+  margin: 90px auto;
+  padding: 0 6%;
+  max-width: 1600px;
+}
+.tour-page .experiences {
+  padding: 0;
+}
+.experience-destinations {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.experience-destinations button {
+  border: 1px solid var(--line);
+  border-radius: 50px;
+  padding: 12px 18px;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+.experience-destinations button[aria-pressed="true"] {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+.experience-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 30px;
+}
+.experience-heading h2 {
+  margin-top: 12px;
+  max-width: 670px;
+  font-size: clamp(30px, 3.4vw, 50px);
+}
+.experience-heading > p {
+  max-width: 320px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.immersive-scene {
+  position: relative;
+  height: clamp(470px, 47vw, 670px);
+  overflow: hidden;
+  border-radius: 4px;
+  background: #162e2e;
+  color: white;
+  isolation: isolate;
+}
+.scene-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: landscape-drift 30s ease-in-out infinite alternate;
+  transition: filter 1.4s;
+}
+@keyframes landscape-drift {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.12) translate(-1%, 1%);
+  }
+}
+.scene-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #061b2855, transparent 40%, #061b28c9);
+  pointer-events: none;
+}
+.is-night .scene-photo {
+  filter: brightness(0.36) saturate(0.6) hue-rotate(12deg);
+}
+.is-night .scene-shade {
+  background: linear-gradient(180deg, #07132c9c, #07132c20 55%, #020b20dc);
+}
+.scene-toolbar {
+  position: absolute;
+  inset: 26px 28px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.scene-location {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+.scene-controls {
+  display: flex;
+  gap: 8px;
+}
+.scene-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 28px;
+  color: white;
+  background: #081b35b8;
+  border: 1px solid #ffffff40;
+  font-size: 12px;
+}
+.scene-control[aria-pressed="true"] {
+  background: #edf3df;
+  color: #173d32;
+}
+.scene-control:focus-visible,
+.story-point:focus-visible {
+  outline-color: white;
+}
+.scene-caption {
+  position: absolute;
+  left: 36px;
+  bottom: 36px;
+  max-width: 65%;
+  pointer-events: none;
+}
+.scene-caption > span {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+.scene-caption h3 {
+  font-size: clamp(30px, 4vw, 57px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin: 14px 0;
+}
+.scene-caption p {
+  font-size: 13px;
+  color: #e4e9e7;
+}
+.scene-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.4s;
+  pointer-events: none;
+}
+.is-night .scene-stars {
+  opacity: 1;
+}
+.scene-stars i {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 9px #c5dfff;
+  animation: star-glow 4s infinite alternate;
+}
+@keyframes star-glow {
+  to {
+    opacity: 0.35;
+  }
+}
+.story-point {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: white;
+}
+.story-point-0 {
+  left: 22%;
+  top: 32%;
+}
+.story-point-1 {
+  left: 53%;
+  top: 43%;
+}
+.story-point-2 {
+  right: 7%;
+  top: 62%;
+}
+.story-point > span {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border: 1px solid #ffffffb3;
+  border-radius: 50%;
+  background: #0c293aaf;
+  box-shadow: 0 0 0 7px #ffffff17;
+  font-size: 12px;
+}
+.story-point.active > span {
+  color: #173d32;
+  background: white;
+}
+.story-point small {
+  background: #061d2fcc;
+  padding: 7px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  max-width: 145px;
+}
+.scene-footnote {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.scene-story.open {
+  padding: 28px;
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--green);
+  background: color-mix(in srgb, var(--lime) 15%, var(--paper));
+}
+.scene-story h3 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+.scene-story p {
+  max-width: 850px;
+  font-size: 15px;
+}
+.scene-story button {
+  margin-top: 16px;
+}
+.journey,
+.keepsakes {
+  margin-top: 85px;
+}
+.journey-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 42px;
+  align-items: start;
+}
+.journey-atlas {
+  position: sticky;
+  top: 28px;
+  border: 1px solid var(--line);
+  padding: 22px;
+  color: var(--green);
+  background: color-mix(in srgb, var(--lime) 13%, var(--paper));
+}
+.journey-atlas svg {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+}
+.journey-atlas strong {
+  display: block;
+  font-size: 18px;
+}
+.journey-atlas small {
+  display: block;
+  margin-top: 12px;
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.journey-trace {
+  transition: stroke-dashoffset 0.7s ease;
+}
+.journey-stop {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px 1fr 150px;
+  gap: 20px;
+  padding: 34px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+  min-height: 245px;
+}
+.stop-number {
+  color: var(--muted);
+  font-size: 15px;
+  padding-top: 2px;
+}
+.reached .stop-number {
+  color: var(--green);
+}
+.journey-stop h3 {
+  font-size: 26px;
+  letter-spacing: -0.035em;
+  margin: 10px 0;
+}
+.journey-stop p {
+  font-size: 13px;
+  color: var(--muted);
+}
+.stop-coordinates {
+  display: block;
+  margin-top: 16px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.journey-stop img {
+  width: 150px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+.keepsake-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+.travel-passport {
+  padding: 30px;
+  background: var(--green);
+  color: #f5f1e6;
+  border-radius: 5px;
+  position: relative;
+}
+.passport-heading {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  border-bottom: 1px solid #ffffff38;
+  padding-bottom: 24px;
+}
+.passport-heading > span {
+  font-size: 20px;
+  letter-spacing: 0.13em;
+}
+.passport-heading small {
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+.passport-heading > strong {
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 500;
+}
+.travel-passport > p {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #e5ede5;
+}
+.passport-stamps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 28px 0;
+}
+.passport-stamp {
+  min-height: 120px;
+  border: 1px dashed #ffffff70;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 14px 8px;
+  text-align: center;
+  color: #d9e4de;
+}
+.passport-stamp span {
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+.passport-stamp strong {
+  font-size: 11px;
+  line-height: 1.4;
+}
+.passport-stamp.collected {
+  transform: rotate(var(--stamp-angle));
+  background: #e8e5ce;
+  color: var(--green);
+  border: 2px double currentColor;
+  box-shadow:
+    inset 0 0 0 4px #e8e5ce,
+    inset 0 0 0 5px currentColor;
+}
+.passport-stamp:focus-visible {
+  outline-color: #e8e5ce;
+}
+.passport-save {
+  background: #e8e5ce;
+  color: var(--green);
+  gap: 14px;
+  width: 100%;
+}
+.keepsake-note {
+  display: block;
+  font-size: 10px;
+  line-height: 1.7;
+  margin-top: 15px;
+}
+.travel-passport .keepsake-note {
+  color: #e5ede5;
+}
+.postcard-maker {
+  border: 1px solid var(--line);
+  padding: 22px;
+  border-radius: 4px;
+}
+.postcard-preview {
+  background: #f4f1e9;
+  color: #173d32;
+  padding: 12px;
+  border: 1px solid #d9d5cb;
+  transform: rotate(1deg);
+  margin-bottom: 25px;
+  box-shadow: 0 8px 20px #0000000a;
+}
+.postcard-preview img {
+  width: 100%;
+  height: 215px;
+  object-fit: cover;
+}
+.postcard-preview > div {
+  padding: 16px 5px 8px;
+}
+.postcard-preview span {
+  font-size: 8px;
+  letter-spacing: 0.17em;
+}
+.postcard-preview strong {
+  display: block;
+  font-size: 19px;
+  line-height: 1.35;
+  margin: 9px 0;
+  overflow-wrap: anywhere;
+}
+.postcard-preview small {
+  font-size: 10px;
+}
+.postcard-label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.postcard-maker input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 13px;
+  font-size: 12px;
+  border-radius: 2px;
+}
+.postcard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+.postcard-actions > span {
+  font-size: 10px;
+  color: var(--muted);
+}
+.postcard-actions .button {
+  font-size: 12px;
+  gap: 12px;
+}
+.postcard-maker .keepsake-note {
+  color: var(--muted);
+}
+@media (max-width: 1050px) {
+  .journey-layout {
+    grid-template-columns: 230px 1fr;
+    gap: 25px;
+  }
+  .journey-stop {
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+  }
+  .journey-stop img {
+    grid-column: 2;
+    width: 100%;
+    height: 150px;
+  }
+  .passport-stamps {
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 700px) {
+  .experiences {
+    margin: 55px auto;
+    padding: 0 5%;
+  }
+  .experience-heading {
+    display: block;
+  }
+  .experience-heading > p {
+    margin-top: 16px;
+    max-width: 100%;
+  }
+  .experience-destinations {
+    gap: 6px;
+  }
+  .experience-destinations button {
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+  .scene-toolbar {
+    inset: 16px 14px auto;
+    flex-direction: column;
+    align-items: start;
+  }
+  .scene-control {
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+  .immersive-scene {
+    height: 530px;
+  }
+  .scene-caption {
+    left: 22px;
+    right: 22px;
+    bottom: 25px;
+    max-width: none;
+  }
+  .scene-caption h3 {
+    font-size: 34px;
+  }
+  .story-point small {
+    display: none;
+  }
+  .story-point-0 {
+    left: 18%;
+    top: 35%;
+  }
+  .story-point-1 {
+    left: 53%;
+    top: 44%;
+  }
+  .story-point-2 {
+    right: 10%;
+    top: 54%;
+  }
+  .journey,
+  .keepsakes {
+    margin-top: 55px;
+  }
+  .journey-layout {
+    grid-template-columns: 95px 1fr;
+    gap: 16px;
+  }
+  .journey-atlas {
+    padding: 10px 7px;
+    top: 16px;
+  }
+  .journey-atlas .eyebrow {
+    display: none;
+  }
+  .journey-atlas svg {
+    margin: 0 0 10px;
+  }
+  .journey-atlas strong {
+    font-size: 11px;
+    overflow-wrap: anywhere;
+  }
+  .journey-atlas small {
+    font-size: 8px;
+  }
+  .journey-stop {
+    grid-template-columns: 1fr;
+    min-height: 280px;
+    padding: 22px 0;
+    gap: 10px;
+  }
+  .journey-stop h3 {
+    font-size: 22px;
+  }
+  .journey-stop .stop-number {
+    display: none;
+  }
+  .journey-stop img {
+    grid-column: 1;
+    height: 125px;
+  }
+  .journey-stop .eyebrow {
+    font-size: 9px;
+  }
+  .journey-stop p {
+    font-size: 12px;
+  }
+  .stop-coordinates {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  .keepsake-grid {
+    grid-template-columns: 1fr;
+  }
+  .travel-passport {
+    padding: 24px;
+  }
+  .passport-stamps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .passport-stamp {
+    min-height: 100px;
+  }
+  .passport-stamp strong {
+    font-size: 9px;
+  }
+  .passport-save {
+    font-size: 12px;
+  }
+  .scene-story.open {
+    padding: 22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene-photo,
+  .scene-stars i {
+    animation: none;
+  }
+  .scene-photo,
+  .scene-stars,
+  .journey-trace,
+  .experience-destinations button {
+    transition: none;
+  }
+}
+
+.place-lore {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  margin-top: 24px;
+}
+.place-lore h4 {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+.place-lore p {
+  color: var(--muted);
+}
+.place-lore a {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 11px;
+  margin-top: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

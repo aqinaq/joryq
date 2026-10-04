@@ -19,6 +19,10 @@ Open http://localhost:4177. Production build: `npm run build`. Preview it with `
 - Two-tour comparison, including accommodation, transport, walking load and sample prices.
 - A desired date, party size, live sample total and validated demo request. There is no backend, booking, payment or submission to a travel company.
 - Language preference in localStorage; filters, selected map destination and comparison in sessionStorage. Name and phone remain in component memory only and are cleared after demo completion or closing the form. Date/party size survive language changes within the current session.
+- “Feel the journey” on the homepage and all tour pages: gently moving landscapes, opt-in synthesized nature ambience, an artistic day/night view and clickable bilingual mini-stories with sourced place information and explicitly labelled local folklore. Audio stops on route changes or when the tab becomes hidden.
+- A scroll-driven schematic route with numbered stops, destination photographs and coordinates. Reduced motion shows the full line without animation.
+- A travel passport with removable favourite-destination stamps stored locally in the browser. Stamps indicate wishes, not verified visits; blocked storage falls back to the current page.
+- A personalised 1600 × 1200 PNG photo postcard with a live text preview. Exports include photographer attribution, source URL, licence URL and modification notice.
 - Responsive layouts, modal focus management, Escape handling, keyboard gallery controls and reduced motion support.
 
 ## Maps and photos
@@ -34,6 +38,8 @@ Local photographs come from Wikimedia Commons. Original source links, authors an
 - `src/data.ts`: bilingual tour data and real marker coordinates.
 - `src/i18n.ts`: interface translations, process and FAQ content.
 - `src/components/Map.tsx`: interactive Leaflet map and error handling.
+- `src/experienceLore.ts`: bilingual place stories with source links.
+- `src/components/Experiences.tsx` and `experiences.css`: landscape immersion, route story, local passport and PNG postcard export.
 - `src/components/Modal.tsx`: native accessible dialog.
 - `src/App.tsx`: routes, catalog, comparison, forms and application state.
 - `src/styles.css`: responsive styles and reduced motion.
@@ -46,7 +52,7 @@ With the dev server running on port 4177:
 npm run test:e2e
 ```
 
-Tests cover Kazakh and Russian on desktop and mobile: filtering → comparison → tour program → completed demo request; language changes preserve choices. Additional checks cover live map zoom, destination selection, direct URLs, empty results, keyboard gallery controls and form errors.
+Tests cover Kazakh and Russian on desktop and mobile: filtering → comparison → tour program → completed demo request; language changes preserve choices. Additional checks cover live map zoom, destination selection, direct URLs, empty results, keyboard gallery controls and form errors. Experience checks cover both languages and viewport sizes, day/night switching, audio, story points, scroll progress, passport persistence/removal, PNG downloads, reduced motion and blocked storage.
 
 The test configuration defaults to installed Google Chrome on macOS. Set `PLAYWRIGHT_CHROMIUM_PATH` to another Chromium executable, or install Playwright Chromium using `npx playwright install chromium` and remove the default executable path from the config.
 

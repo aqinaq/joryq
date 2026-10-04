@@ -47,6 +47,7 @@ import TerrainMap from "./components/Map";
 import { Modal } from "./components/Modal";
 import credits from "./credits.json";
 import { RouteMotion } from "./components/Motion";
+import { Experiences } from "./components/Experiences";
 
 type Filters = {
   direction: string;
@@ -198,7 +199,7 @@ function Logo() {
   );
 }
 function Header() {
-  const { t } = useApp();
+  const { t, lang } = useApp();
   const [open, setOpen] = useState(false);
   const loc = useLocation();
   useEffect(() => setOpen(false), [loc]);
@@ -207,6 +208,9 @@ function Header() {
       <Logo />
       <nav className={open ? "nav open" : "nav"} aria-label="Main">
         <Link to="/#tours">{t("tours")}</Link>
+        <Link to="/#experiences">
+          {lang === "kk" ? "Сапарды сезін" : "Впечатления"}
+        </Link>
         <Link to="/#how">{t("how")}</Link>
         <Link to="/#faq">{t("faq")}</Link>
       </nav>
@@ -270,10 +274,13 @@ export default function App() {
   );
 }
 function Home() {
+  const { active, lang, setActive } = useApp();
+  const tour = tours.find((item) => item.id === active) || tours[0];
   return (
     <main>
       <Hero />
       <Catalog />
+      <Experiences tour={tour} lang={lang} onSelect={setActive} />
       <Process />
       <Story />
       <FAQ />
@@ -1244,6 +1251,7 @@ function TourPage() {
           <span className="booking-fineprint">{t("privacy")}</span>
         </aside>
       </div>
+      <Experiences key={tour.id} tour={tour} lang={lang} />
       <section className="related">
         <div className="section-heading">
           <h2>{t("related")}</h2>
